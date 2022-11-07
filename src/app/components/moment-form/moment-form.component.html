@@ -1,0 +1,34 @@
+<form (ngSubmit)="submit()" [formGroup]='formMoments' novalidate #formDir = "ngForm">
+
+    <div class="form-group">
+        <!-- <input type="hidden" formControlName="id"> -->
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Título</mat-label>
+            <input matInput placeholder="Coloque um título" formControlName="title" name="title" required>
+            <mat-error *ngIf="formMoments.get('title')?.hasError('required')">campo obrigatorio</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form-group">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Descrição:</mat-label>
+            <input matInput placeholder="O que aconteceu lá?" formControlName="description" required>
+            <mat-error *ngIf="formMoments.get('description')?.hasError('required')">campo obrigatorio</mat-error>
+            <mat-error *ngIf="formMoments.get('description')?.hasError('minlength')">Descreva melhor</mat-error> 
+        </mat-form-field>
+    </div>
+
+    <div class="form-group">
+        <label for="image">Coloque a foto que mais marcou:</label>
+        <input type="file" (change)="onFileSelected($event)" />
+        <mat-error *ngIf="formMoments.get('image')?.hasError('required') && formDir.submitted">campo obrigatorio
+        </mat-error>
+    </div>
+
+
+
+    <button mat-raised-button class="btn" type="submit">{{btnText}}</button>
+</form>
+
+<!-- 
+{{formMoments.value |json}} -->

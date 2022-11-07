@@ -1,0 +1,25 @@
+<div class="home-container m-5">
+    <h1>Veja o que estão compartilhando...</h1>
+
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">  <i class="bi bi-search"></i></span>
+        <input type="text" class="form-control" placeholder="Ou procure por um momento" (input) = "search($event)" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+
+ 
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let moment of moments">
+        <div class="card h-100">
+            <img src="http://localhost:3333/uploads/{{moment.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h2 class="card-title bold">{{moment.title}}</h2>
+                <p class="">Em:{{moment.created_at}}</p>
+                <p class="">Comentários:{{moment.comments?.length}}</p> 
+                <p><a routerLink="moment/{{moment.id}}">Detalhes</a></p>
+            </div>
+        </div>
+    </div>
+</div> 
+
+</div>
